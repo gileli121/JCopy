@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.HTMLEditor?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.copypaste.copy.CopyGUI">
+   <children>
+      <HBox prefHeight="29.0" prefWidth="605.0" />
+      <HBox maxHeight="48.0" minHeight="48.0" prefHeight="48.0" prefWidth="584.0" style="-fx-background-color: Gainsboro;">
+         <children>
+            <Label prefHeight="48.0" prefWidth="153.0" text="Save this copy:" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <ComboBox fx:id="saveCopyModeCombo" onAction="#onSaveCopyModeChanged" prefHeight="39.0" prefWidth="245.0" style="-fx-font-size: 18px;">
+               <HBox.margin>
+                  <Insets top="8.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane fx:id="clipInfoArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="292.0" style="-fx-open-tab-animation: NONE;" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <tabs>
+                  <Tab fx:id="richTextTab" text="Rich Text">
+                     <content>
+                        <HTMLEditor fx:id="richTextView" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" maxHeight="1.7976931348623157E308" minWidth="0.0" prefHeight="232.0" />
+                     </content>
+                  </Tab>
+                  <Tab fx:id="plainTextTab" text="Plain Text">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextArea fx:id="plainTextView" prefHeight="121.0" prefWidth="561.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="2.0" right="2.0" top="2.0" />
+                                 </VBox.margin>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="clipPropertiesTab" text="Set Properties">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="231.0" layoutY="-19.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="162.0" prefWidth="561.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox prefHeight="33.0" prefWidth="561.0">
+                                       <children>
+                                          <Label minWidth="157.0" prefHeight="32.0" prefWidth="157.0" text="Display Name:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets right="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <TextArea fx:id="selectedClipDisplayName" maxWidth="1.7976931348623157E308" onKeyReleased="#onClipDisplayNameChange" prefHeight="107.0" prefWidth="605.0">
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <HBox prefHeight="0.0" prefWidth="642.0">
+                                       <children>
+                                          <ComboBox fx:id="selectedClipTagsCombo" editable="true" prefHeight="25.0" prefWidth="278.0" promptText="Add TAG">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="4.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                          <Button fx:id="selectedClipAddTag" mnemonicParsing="false" onAction="#onNewTagInSelectedClip" prefHeight="25.0" prefWidth="84.0" text="Add">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="4.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <ScrollPane prefHeight="125.0" prefWidth="595.0">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="127.0" prefWidth="634.0">
+                                             <children>
+                                                <HBox fx:id="selectedClipTags" prefHeight="127.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="clipEncryptionTab" text="Encryption">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="143.0" text="Set password" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="8.0" top="8.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox fx:id="newPasswordArea" layoutX="10.0" layoutY="52.0" prefHeight="27.0" prefWidth="561.0">
+                                 <children>
+                                    <Label minHeight="-Infinity" minWidth="-Infinity" text="Password:">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="8.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="newPasswordField" prefHeight="25.0" prefWidth="224.0" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="551.0" VBox.vgrow="NEVER">
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#onSetEncryptionBtn" prefHeight="30.0" prefWidth="172.0" text="Set password" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </HBox>
+      <HBox maxHeight="54.0" minHeight="54.0" prefHeight="54.0" prefWidth="584.0">
+         <children>
+            <Pane prefHeight="54.0" prefWidth="377.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+            <Button fx:id="saveClip" mnemonicParsing="false" onAction="#onSaveClip" prefHeight="38.0" prefWidth="190.0" text="Done">
+               <HBox.margin>
+                  <Insets right="10.0" top="7.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

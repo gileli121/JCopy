@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.about.AboutGUI">
+   <children>
+      <Label fx:id="programNameLabel" alignment="CENTER" layoutX="-2.0" layoutY="14.0" prefHeight="46.0" prefWidth="412.0" textFill="#2978cd">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Label fx:id="versionLabel" alignment="CENTER" layoutY="73.0" prefHeight="36.0" prefWidth="412.0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="websiteDisplayLabel" alignment="CENTER" layoutY="134.0" onAction="#onWebsiteClick" prefHeight="45.0" prefWidth="412.0" textFill="#69902a">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Hyperlink>
+      <Button layoutX="125.0" layoutY="210.0" mnemonicParsing="false" onAction="#onCloseWindow" prefHeight="45.0" prefWidth="163.0" text="Close Window">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
