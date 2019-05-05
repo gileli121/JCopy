@@ -1,5 +1,5 @@
 # JCopy - Java Clipboard Manager
-JCopy is an Open Source application that helps you to work more easily buy managing your clipboard.
+JCopy is an Open Source application that helps you to work more easily by managing your clipboard.
 
 A lot of times you may need to type something that you already typed such as a piece of code, phone number, password and more. so you have to go to some document or whatever it be to get the stuff you need to type again.
 
